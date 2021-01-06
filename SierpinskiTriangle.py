@@ -1,7 +1,12 @@
 from tkinter import *
 
 def display_triangle():
+     global output_frame
+     output_frame.destroy()
+     output_frame = Frame()
+     output_frame.grid(row=4,columnspan=3)
      pascorder = 2**int(size.get())
+
      if int(size.get()) > 5:
           out_label.configure(text="Please choose a lower order (n < 6). "+size.get()+" is too computationally heavy.")
           return
@@ -16,8 +21,6 @@ def display_triangle():
 
      triangle = [[0]*(pascorder-1-i) + triangle[i] + [0]*(pascorder-i-1) for i in range(pascorder)]
      out_label.configure(text="Sierpinski triangle of order "+size.get()+":")
-     output_frame = Frame()
-     output_frame.grid(row=4,columnspan=3)
      output = [[0]*(2*pascorder-1) for i in range(pascorder)]
      for i in range(len(output)):
           for j in range(len(output[i])):
@@ -29,10 +32,12 @@ size_label = Label(text="What order Sierpinski Triangle do you want?", font=("Ve
 size = Entry(font=("Verdana",16),width=5)
 out_label = Label(font=("Verdana",16))
 compute = Button(text="compute",font=("Verdana",16),command=display_triangle)
+output_frame = Frame()
 
 size_label.grid(row=0,column=0,columnspan=3)
 size.grid(row=1,column=0,columnspan=3)
 compute.grid(row=2,column=0,columnspan=3)
 out_label.grid(row=3,column=0,columnspan=3)
+output_frame.grid(row=4,columnspan=3)
 
 mainloop()
