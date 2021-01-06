@@ -13,10 +13,10 @@ def display_triangle():
      triangle = [[1],[1,1]]
      while len(triangle) < pascorder:
           triangle.append([1] + [triangle[-1][i-1] + triangle[-1][i] for i in range(1,len(triangle[-1]))] + [1])
-     for k in range(len(triangle)):
+     for k in triangle:
           i = 1
-          while i < len(triangle[k]):
-               triangle[k].insert(i,0)
+          while i < len(k):
+               k.insert(i,0)
                i+=2
 
      triangle = [[0]*(pascorder-1-i) + triangle[i] + [0]*(pascorder-i-1) for i in range(pascorder)]
@@ -30,14 +30,13 @@ def display_triangle():
 root = Tk()
 size_label = Label(text="What order Sierpinski Triangle do you want?", font=("Verdana",16))
 size = Entry(font=("Verdana",16),width=5)
+output_frame = Frame()
 out_label = Label(font=("Verdana",16))
 compute = Button(text="compute",font=("Verdana",16),command=display_triangle)
-output_frame = Frame()
 
 size_label.grid(row=0,column=0,columnspan=3)
 size.grid(row=1,column=0,columnspan=3)
 compute.grid(row=2,column=0,columnspan=3)
 out_label.grid(row=3,column=0,columnspan=3)
-output_frame.grid(row=4,columnspan=3)
 
 mainloop()
