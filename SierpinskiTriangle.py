@@ -6,7 +6,6 @@ def display_triangle():
      output_frame = Frame()
      output_frame.grid(row=4,columnspan=3)
      pascorder = 2**int(size.get())
-
      if int(size.get()) > 5:
           out_label.configure(text="Please choose a lower order (n < 6). "+size.get()+" is too computationally heavy.")
           return
@@ -18,9 +17,8 @@ def display_triangle():
           while i < len(k):
                k.insert(i,0)
                i+=2
-
      triangle = [[0]*(pascorder-1-i) + triangle[i] + [0]*(pascorder-i-1) for i in range(pascorder)]
-     out_label.configure(text="Sierpinski triangle of order "+size.get()+":")
+     out_label.configure(text="Order "+size.get()+" triangle:")
      output = [[0]*(2*pascorder-1) for i in range(pascorder)]
      for i in range(len(output)):
           for j in range(len(output[i])):
@@ -28,7 +26,7 @@ def display_triangle():
                output[i][j].grid(row=i+4,column=j,ipadx=5,ipady=5)
 
 root = Tk()
-size_label = Label(text="What order Sierpinski Triangle do you want?", font=("Verdana",16))
+size_label = Label(text="Order of Sierpinski Triangle?", font=("Verdana",16))
 size = Entry(font=("Verdana",16),width=5)
 output_frame = Frame()
 out_label = Label(font=("Verdana",16))
